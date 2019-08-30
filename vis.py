@@ -4,7 +4,7 @@ import seaborn as sns
 
 def prop_plot(x, data, value, hue1=None, hue2=None, **kwargs):
     """Create a plot with the size of the proportion of the target value.
-    Subgroups can be specified by hue1, hue2
+    Subgroups can be specified by hue1, hue2.
     """
     hues = [hue for hue in [hue1, hue2] if hue]
     groups = data.groupby([*hues, x]).size()
@@ -20,10 +20,12 @@ def prop_plot(x, data, value, hue1=None, hue2=None, **kwargs):
 
 
 def patchesborder(ax, lw=1, color="k"):
+    """Add border arount ax patches"""
     plt.setp(ax.patches, linewidth=lw, edgecolor=color)
 
 
 def change_barwidth(ax, width):
+    """Change width of ax patches."""
     for patch in ax.patches:
         current_width = patch.get_width()
         diff = current_width - width
